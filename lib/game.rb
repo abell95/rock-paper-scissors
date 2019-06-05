@@ -18,17 +18,17 @@ class Game
 
   # could be better but this isn't horrible I guess
   def winner(left, right)
-    if (WINNERS.has_key?(left) && WINNERS[left] == right)
+    if (WINNERS[left] == right)
       left.to_s.capitalize
-    elsif(WINNERS.has_key?(right))
+    else
       right.to_s.capitalize
     end
   end
 
   def loser(left, right)
-    if (WINNERS.has_key?(left) && WINNERS[left] == right)
+    if (WINNERS[left] == right)
       right.to_s
-    elsif(WINNERS.has_key?(right))
+    else
       left.to_s
     end
   end
