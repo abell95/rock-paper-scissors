@@ -23,6 +23,8 @@ describe 'A game of rock paper scissors' do
 
   describe 'playing' do
 
+    # can use subject here too
+
     context 'without starting' do
       it 'can not be played if it has not started' do
         game = Game.new
@@ -56,32 +58,31 @@ describe 'A game of rock paper scissors' do
       end
     end
 
-    context 'rock vs scissors' do
-      it 'announces the correct winner' do
-        game = Game.new
-        game.start
+    context 'game results are correct' do
+      # create subject.. don't remember how
+      game = Game.new
+      game.start
+
+      it 'announces the correct winner for rock vs scissors' do
         expect(game.play(:rock, :scissors)).to eq("Rock beats scissors!")
         expect(game.play(:scissors, :rock)).to eq("Rock beats scissors!")
       end
-      skip('is finished')
+
+      it 'announces the correct winner for rock vs paper' do
+        expect(game.play(:rock, :paper)).to eq("Paper beats rock!")
+        expect(game.play(:paper, :rock)).to eq("Paper beats rock!")
+      end
+
+      it 'announces the correct winner for scissors vs paper' do
+        expect(game.play(:scissors, :paper)).to eq("Scissors beats paper!")
+        expect(game.play(:paper, :scissors)).to eq("Scissors beats paper!")
+      end
+
+      it 'ties on the same move' do
+        expect(game.play(:rock, :rock)).to eq("Tie game. Try again!")
+        expect(game.play(:paper, :paper)).to eq("Tie game. Try again!")
+        expect(game.play(:scissors, :scissors)).to eq("Tie game. Try again!")
+      end
     end
-
-    context 'rock vs paper' do
-      skip('returns "Paper beats rock!"')
-      skip('is finished')
-    end
-
-
-    context 'scissors vs paper' do
-      skip('returns "Scissors vs paper!"')
-      skip('is finished')
-    end
-
-    context 'a tie game' do
-      skip('returns "Tie game. Try again!"')
-      skip('is not finished')
-    end
-
   end
-
 end
